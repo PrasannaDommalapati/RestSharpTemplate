@@ -1,0 +1,4 @@
+C:\Development\Repos\RestSharpTemplate\RestSharpTemplate\obj\Debug\netcoreapp2.1\RestSharpTemplate.csprojAssemblyReference.cache
+C:\Development\Repos\RestSharpTemplate\RestSharpTemplate\obj\Debug\netcoreapp2.1\RestSharpTemplate.csproj.CoreCompileInputs.cache
+C:\Development\Repos\RestSharpTemplate\RestSharpTemplate\obj\Debug\netcoreapp2.1\RestSharpTemplate.AssemblyInfoInputs.cache
+C:\Development\Repos\RestSharpTemplate\RestSharpTemplate\obj\Debug\netcoreapp2.1\RestSharpTemplate.AssemblyInfo.cs
