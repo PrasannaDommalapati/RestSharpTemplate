@@ -7,6 +7,9 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace RestSharpTemplate
 {
@@ -107,6 +110,14 @@ namespace RestSharpTemplate
             {
                 nodeReader.MoveToContent();
                 return XDocument.Load(nodeReader);
+            }
+        }
+
+        public static async Task<HttpResponseMessage> SendAsync(HttpRequestMessage requestMessage)
+        {
+            using(var httpClient = new HttpClient ())
+            {
+                return await httpClient.SendAsync(requestMessage, CancellationToken.None).ConfigureAwait(false);
             }
         }
     }

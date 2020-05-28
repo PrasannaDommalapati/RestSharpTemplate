@@ -3,8 +3,6 @@ using Newtonsoft.Json.Linq;
 using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Xml.Linq;
 using TechTalk.SpecFlow;
 
 namespace RestSharpTemplate.Steps
@@ -95,38 +93,6 @@ namespace RestSharpTemplate.Steps
             }
 
         }
-
-        [When(@"I have '(.*)' get count")]
-        public void WhenIHaveGetCount(string fileName)
-        {
-            var requestList = fileName.RequestList();
-            List<string> results = new List<string>();
-
-            XNamespace Namespace = "axa-ppp-outputs";
-            XName MembershipNumber = Namespace + "membership-number";
-            XName GroupNumber = Namespace + "group-number";
-
-            foreach (var request in requestList)
-            {
-                dynamic body = JObject.Parse(request);
-                string data = body.data;
-                XDocument xDoc = XDocument.Parse(Helper.DecodeBase64(data));
-                var groupNumber = xDoc.Descendants(GroupNumber).FirstOrDefault();
-                if (groupNumber != null)
-                    results.Add(groupNumber.Value);
-
-                var memberNumber = xDoc.Descendants(MembershipNumber).FirstOrDefault();
-                if (memberNumber != null)
-                    results.Add(memberNumber.Value);
-            }
-            var disRes = results.Distinct().OrderBy(o => o);
-            var orderedRes = string.Join(Environment.NewLine, disRes);
-
-            Console.WriteLine(disRes.Count());
-            Console.WriteLine(orderedRes);
-        }
-
-
 
         [Then("I should receive status code '(.*)'")]
         public void ThenIShouldReceiveStatusCode(string statusCode)

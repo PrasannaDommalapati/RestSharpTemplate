@@ -1,36 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
   <TestRunParameters>
-    <Parameter name="LOCAL:Endpoint" value="https://localhost:44310/api/"/>
-    <Parameter name="LOCAL:Subscription" value="NotRequired"/>
-    <Parameter name="DV:Endpoint" value=""/>
-    <Parameter name="DV:Subscription" value=""/>
-    <Parameter name="QA:Endpoint" value=""/>
-    <Parameter name="QA:Subscription" value=""/>
-    <Parameter name="PP:Endpoint" value=""/>
-    <Parameter name="PP:Subscription" value=""/>
-    <Parameter name="PR:Endpoint" value=""/>
-    <Parameter name="PR:Subscription" value=""/>
-    <Parameter name="NoSubscription" value="IAmNotAuthorized"/>
-
-    <!--HARPA Constants-->
-    <Parameter name="HARPA:User" value=""/>
-    <Parameter name="HARPA:BusinessApplication" value=""/>
-    <Parameter name="HARPA:BusinessUnit" value=""/>
-    <Parameter name="HARPA:Entity" value=""/>
-    <Parameter name="HARPA:Templates" value=""/>
-    
-    <!--SIGMA Constants-->
-    <Parameter name="SIGMA:User" value=""/>
-    <Parameter name="SIGMA:BusinessApplication" value=""/>
-    <Parameter name="SIGMA:BusinessUnit" value=""/>
-    <Parameter name="SIGMA:Entity" value=""/>
-    <Parameter name="SIGMA:Templates" value=""/>
-
-
-    <!--Change below parameters to send correct template request to Outputs API-->
-    <Parameter name ="Environment" value=""/>
-    <Parameter name ="RequestType" value=""/>
-    <Parameter name ="RequestsCount" value=""/>
+    <Parameter name="api.address" value="https://localhost:44310/api/"/>
   </TestRunParameters>
 </RunSettings>
