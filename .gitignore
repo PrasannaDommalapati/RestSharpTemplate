@@ -8,3 +8,8 @@
 /RestSharpTemplate/obj/Debug/net7.0
 /RestSharpTemplate/obj/Debug/net8.0
 /RestSharpTemplate/local.runsettings
+/RestSharpTemplate/obj/project.nuget.cache
+/RestSharpTemplate/obj/project.assets.json
+/RestSharpTemplate/obj/RestSharpTemplate.csproj.nuget.dgspec.json
+/RestSharpTemplate/obj/RestSharpTemplate.csproj.nuget.g.props
+/RestSharpTemplate/obj/RestSharpTemplate.csproj.nuget.g.targets
