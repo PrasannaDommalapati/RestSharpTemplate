@@ -1,6 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <RunSettings>
-  <TestRunParameters>
-    <Parameter name="api.address" value="https://localhost:44310/api/"/>
-  </TestRunParameters>
+	<TestRunParameters>
+		<Parameter name="CoreApiUrl" value="http://localhost:8081"/>
+		<Parameter name="EventsHostUserName" value="Prasanna Dommalapati system Access"/>
+		<Parameter name="EventsHostPassword" value="France$1874$"/>
+		<Parameter name="AdminWebUrl" value="http://localhost:8090"/>
+		<Parameter name="EstateId" value="c24450f7-8073-4ae7-89d8-bfeaeaaf2e6e"/>
+		<Parameter name="CompanyId" value="c24450f7-8073-4ae7-89d8-bfeaeaaf2e6e"/>
+		<Parameter name="SiteId" value="c24450f7-8073-4ae7-89d8-bfeaeaaf2e6e"/>
+		<Parameter name="Environment" value="Local"/>
+	</TestRunParameters>
 </RunSettings>

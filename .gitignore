@@ -1,0 +1,10 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/RestSharpTemplate/bin/Debug/net6.0
+/RestSharpTemplate/bin/Debug/net8.0
+/RestSharpTemplate/obj/Debug/net7.0
+/RestSharpTemplate/obj/Debug/net8.0
+/RestSharpTemplate/local.runsettings

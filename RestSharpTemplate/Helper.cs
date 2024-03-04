@@ -10,12 +10,13 @@ using System.Xml.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Threading;
+using Bogus;
 
 namespace RestSharpTemplate
 {
     public static class Helper
     {
-     
+
         public static Authorisation Authorisation;
         public static RestRequest Request { get; set; }
 
@@ -26,7 +27,7 @@ namespace RestSharpTemplate
         public static Authorisation Auth(TestContext context)
         {
             string env = context.Properties["Environment"].ToString();
-    
+
             Authorisation = new Authorisation
             {
                 Endpoint = context.Properties[$"{env}:Endpoint"].ToString(),
@@ -59,66 +60,18 @@ namespace RestSharpTemplate
             return Request;
         }
 
-        public static string EncodeBase64(string data)
-        {
-            if (data == null)
-                throw new ArgumentNullException(nameof(data));
-
-            return Convert.ToBase64String(Encoding.UTF8.GetBytes(data));
-        }
-
-        public static string DecodeBase64(string data)
-        {
-            if (data == null)
-                throw new ArgumentNullException(nameof(data));
-
-            return Encoding.UTF8.GetString(Convert.FromBase64String(data));
-        }
-
-        public static string GetBase64Template(this string fileName)
-        {
-            if (fileName == null)
-                throw new ArgumentNullException(nameof(fileName));
-            var XMLPath = Path.Combine("Templates", Path.ChangeExtension(fileName, "xml"));
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(XMLPath);
-
-            return EncodeBase64(xDoc.OuterXml);
-        }
-
-        public static IEnumerable<string> RequestList(this string fileName)
-        {
-            var jsonPath = Path.Combine("Templates", Path.ChangeExtension(fileName, "json"));
-
-            return File.ReadLines(jsonPath);
-        }
-
-        public static XDocument GetXMLTemplate(this string fileName)
-        {
-            if (fileName == null)
-                throw new ArgumentNullException(nameof(fileName));
-            var XMLPath = Path.Combine("Templates", Path.ChangeExtension(fileName, "xml"));
-            XmlDocument xDoc = new XmlDocument();
-            xDoc.Load(XMLPath);
-
-            return xDoc.ToXDocument();
-        }
-
-        public static XDocument ToXDocument(this XmlDocument xmlDocument)
-        {
-            using (var nodeReader = new XmlNodeReader(xmlDocument))
-            {
-                nodeReader.MoveToContent();
-                return XDocument.Load(nodeReader);
-            }
-        }
-
         public static async Task<HttpResponseMessage> SendAsync(HttpRequestMessage requestMessage)
         {
-            using(var httpClient = new HttpClient ())
+            using (var httpClient = new HttpClient())
             {
                 return await httpClient.SendAsync(requestMessage, CancellationToken.None).ConfigureAwait(false);
             }
+        }
+
+        public static string GetRootDir()
+        {
+            var currentDir = Directory.GetCurrentDirectory();
+            return currentDir.Split("bin")[0];
         }
     }
 }

@@ -10,11 +10,12 @@ namespace RestSharpTemplate.Steps
     public sealed class Hooks
     {
         private readonly IObjectContainer ObjectContainer;
-        private IRestClient Client;
+        private RestClient _restClient;
         public TestContext TestContext { get; set; }
+        public RunSettings _runSettings { get; set; }
 
 
-        public Hooks(IObjectContainer objectContainer,TestContext context)
+        public Hooks(IObjectContainer objectContainer, TestContext context)
         {
             TestContext = context;
             ObjectContainer = objectContainer;
@@ -23,9 +24,19 @@ namespace RestSharpTemplate.Steps
         [BeforeScenario]
         public void BeforeScenario()
         {
-            string env = TestContext.Properties["Environment"].ToString();
-            Client = new RestClient(TestContext.Properties[$"{env}:Endpoint"].ToString());
-            ObjectContainer.RegisterInstanceAs<IRestClient>(Client);
+            _runSettings = new RunSettings
+            {
+                AdminWebUrl = TestContext.Properties[nameof(RunSettings.AdminWebUrl)].ToString(),
+                CoreApiUrl = TestContext.Properties[nameof(RunSettings.CoreApiUrl)].ToString(),
+                EventsHostUserName = TestContext.Properties[nameof(RunSettings.EventsHostUserName)].ToString(),
+                EventsHostPassword = TestContext.Properties[nameof(RunSettings.EventsHostPassword)].ToString(),
+                EstateId = Guid.Parse(TestContext.Properties[nameof(RunSettings.EstateId)].ToString()),
+                CompanyId = Guid.Parse(TestContext.Properties[nameof(RunSettings.CompanyId)].ToString()),
+                SiteId = Guid.Parse(TestContext.Properties[nameof(RunSettings.SiteId)].ToString()),
+            };
+            _restClient = new RestClient();
+            ObjectContainer.RegisterInstanceAs(_restClient);
+            ObjectContainer.RegisterInstanceAs(_runSettings);
         }
 
         [AfterScenario]
